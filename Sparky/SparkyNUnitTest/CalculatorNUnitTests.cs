@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Sparky.NUnitTests;
+namespace Sparky.NUnitTest;
 
 [TestFixture]
 public class CalculatorNUnitTests
