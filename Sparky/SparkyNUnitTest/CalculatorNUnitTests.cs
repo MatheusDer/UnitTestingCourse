@@ -41,4 +41,14 @@ public class CalculatorNUnitTests
 
         Assert.IsFalse(result);
     }
+
+    [Test]
+    [TestCase(10, ExpectedResult = false)]
+    [TestCase(3, ExpectedResult = true)]
+    public bool IsOddNumber_Number_ReturnTrueIfOdd(int number)
+    {
+        var calculator = new Calculator();
+
+        return calculator.IsOddNumber(number);
+    }
 }
