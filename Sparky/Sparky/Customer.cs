@@ -16,7 +16,10 @@ public class Customer
 
     public string GreetAndCombineNames(string firstName, string lastName)
     {
-        GreetMessage = $"Hello, {firstName} {lastName}";
+        if (string.IsNullOrEmpty(firstName))
+            throw new ArgumentException("Empty first name");
+
+        GreetMessage = $"Hello, {firstName} {lastName}".TrimEnd();
         Discount = 20;
 
         return GreetMessage;
