@@ -2,7 +2,7 @@
 {
     public class Calculator
     {
-        public static int AddNumbers(int a, int b)
+        public int AddNumbers(int a, int b)
             => a + b;
     }
 }
