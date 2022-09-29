@@ -51,4 +51,17 @@ public class CalculatorNUnitTests
 
         return calculator.IsOddNumber(number);
     }
+
+    [Test]
+    [TestCase(11.2, 0.8)]
+    [TestCase(11.2, 0.2)]
+    [TestCase(11.2, 1)]
+    public void AddNumbers_TwoDouble_GetCorrectAddition(double a, double b)
+    {
+        var calculatorMSTests = new Calculator();
+
+        var result = calculatorMSTests.AddNumbers(a, b);
+
+        Assert.AreEqual(12, result, 1); //number between 11-13 will assert
+    }
 }
