@@ -1,8 +1,7 @@
-﻿namespace Sparky
+﻿namespace Sparky;
+
+public class Calculator
 {
-    public class Calculator
-    {
-        public int AddNumbers(int a, int b)
-            => a + b;
-    }
+    public int AddNumbers(int a, int b)
+        => a + b;
 }
