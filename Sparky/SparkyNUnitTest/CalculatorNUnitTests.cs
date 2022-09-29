@@ -64,4 +64,21 @@ public class CalculatorNUnitTests
 
         Assert.AreEqual(12, result, 1); //number between 11-13 will assert
     }
+
+    [Test]
+    public void OddRanger_TwoNumbers_ReturnValidOddNumbersRange()
+    {
+        var calc = new Calculator();
+        var expected = new List<int>() { 1, 3, 5, 7, 9 };
+
+        var result = calc.GetOddRange(1, 10);
+
+        Assert.AreEqual(expected, result);
+        Assert.That(result, Is.EquivalentTo(expected));
+        Assert.Contains(7, result);
+        Assert.That(result, Does.Contain(7));
+        Assert.That(result, Is.Not.Empty);
+        Assert.That(result.Count, Is.EqualTo(expected.Count));
+        Assert.That(result, Is.Ordered);
+    }
 }
