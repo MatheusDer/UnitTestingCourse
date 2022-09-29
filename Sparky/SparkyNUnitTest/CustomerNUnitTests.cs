@@ -17,4 +17,22 @@ public class CustomerNUnitTests
         Assert.That(result, Does.StartWith("a").IgnoreCase);
         Assert.That(result, Does.Match("[A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+"));
     }
+
+    [Test]
+    public void GreetMessage_NotGreeted_ReturnsNull()
+    {
+        var customer = new Customer();
+
+        Assert.IsNull(customer.GreetMessage);
+    }
+
+    [Test]
+    public void GreetMessage_Greeted_ReturnsAMessage()
+    {
+        var customer = new Customer();
+
+        customer.GreetAndCombineNames("name", "lastName");
+
+        Assert.IsNotNull(customer.GreetMessage);
+    }
 }
