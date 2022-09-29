@@ -5,11 +5,17 @@ namespace Sparky.NUnitTest;
 [TestFixture]
 public class CustomerNUnitTests
 {
+    private Customer customer;
+
+    [SetUp]
+    public void Setup()
+    {
+        customer = new();
+    }
+
     [Test]
     public void CombineNames_TwoNames_ReturnFullName()
     {
-        var customer = new Customer();
-
         var result = customer.CombineNames("Ab", "Cd");
 
         Assert.AreEqual("Ab Cd", result);
@@ -21,16 +27,12 @@ public class CustomerNUnitTests
     [Test]
     public void GreetMessage_NotGreeted_ReturnsNull()
     {
-        var customer = new Customer();
-
         Assert.IsNull(customer.GreetMessage);
     }
 
     [Test]
     public void GreetMessage_Greeted_ReturnsAMessage()
     {
-        var customer = new Customer();
-
         customer.GreetAndCombineNames("name", "lastName");
 
         Assert.IsNotNull(customer.GreetMessage);
