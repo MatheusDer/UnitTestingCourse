@@ -17,4 +17,28 @@ public class CalculatorNUnitTests
         //Assert
         Assert.AreEqual(30, result);
     }
+
+    [Test]
+    public void IsOddNumber_OddNumber_ReturnTrue()
+    {
+        var calculator = new Calculator();
+
+        var result = calculator.IsOddNumber(1);
+
+        Assert.IsTrue(result);
+        //Assert.That(result, Is.True);
+        //Assert.That(result, Is.EqualTo(true));
+    }
+
+    [Test]
+    [TestCase(2)]
+    [TestCase(4)]
+    public void IsOddNumber_EvenNumber_ReturnFalse(int number)
+    {
+        var calculator = new Calculator();
+
+        var result = calculator.IsOddNumber(number);
+
+        Assert.IsFalse(result);
+    }
 }
