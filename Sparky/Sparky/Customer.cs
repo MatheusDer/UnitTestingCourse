@@ -8,11 +8,17 @@ namespace Sparky;
 
 public class Customer
 {
+    public int Discount = 15;
     public string GreetMessage { get; set; }
 
     public string CombineNames(string firstName, string lastName)
         => $"{firstName} {lastName}";
 
     public string GreetAndCombineNames(string firstName, string lastName)
-        => GreetMessage = $"Hello, {firstName} {lastName}";
+    {
+        GreetMessage = $"Hello, {firstName} {lastName}";
+        Discount = 20;
+
+        return GreetMessage;
+    }
 }
