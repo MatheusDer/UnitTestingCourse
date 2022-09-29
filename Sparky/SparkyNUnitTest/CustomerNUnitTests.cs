@@ -64,4 +64,21 @@ public class CustomerNUnitTests
         Assert.That(() => customer.GreetAndCombineNames("", ""), 
             Throws.ArgumentException.With.Message.EqualTo("Empty first name"));
     }
+
+    [Test]
+    public void CustomerType_CreateCustomerWithLessThan100Order_ReturnsBasicCustomer()
+    {
+        customer.OrderTotal = 10;
+        var result = customer.GetCustomerDetail();
+
+        Assert.That(result, Is.TypeOf<BasicCustomer>());
+    }
+
+    public void CustomerType_CreateCustomerWithGreaterThan100Order_ReturnsPlatinumCustomer()
+    {
+        customer.OrderTotal = 101;
+        var result = customer.GetCustomerDetail();
+
+        Assert.That(result, Is.TypeOf<PlatinumCustomer>());
+    }
 }

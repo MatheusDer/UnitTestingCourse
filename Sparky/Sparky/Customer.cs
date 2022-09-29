@@ -10,6 +10,7 @@ public class Customer
 {
     public int Discount = 15;
     public string GreetMessage { get; set; }
+    public int OrderTotal { get; set; }
 
     public string CombineNames(string firstName, string lastName)
         => $"{firstName} {lastName}";
@@ -24,4 +25,16 @@ public class Customer
 
         return GreetMessage;
     }
+
+    public CustomerType GetCustomerDetail()
+    {
+        if (OrderTotal < 100)
+            return new BasicCustomer();
+
+        return new PlatinumCustomer();
+    }
 }
+
+public class CustomerType { }
+public class BasicCustomer : CustomerType { }
+public class PlatinumCustomer : CustomerType { }
