@@ -1,11 +1,10 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 
 namespace Sparky.NUnitTest;
 
-[TestFixture]
 public class CalculatorXUnitTests
 {
-    [Test]
+    [Fact]
     public void AddNumbers_TwoInt_GetCorrectAddition()
     {
         //Arange
@@ -15,57 +14,57 @@ public class CalculatorXUnitTests
         var result = calculatorMSTests.AddNumbers(10, 20);
 
         //Assert
-        Assert.AreEqual(30, result);
+        Assert.Equal(30, result);
     }
 
-    [Test]
+    [Fact]
     public void IsOddNumber_OddNumber_ReturnTrue()
     {
         var calculator = new Calculator();
 
         var result = calculator.IsOddNumber(1);
 
-        Assert.IsTrue(result);
+        Assert.True(result);
         //Assert.That(result, Is.True);
         //Assert.That(result, Is.EqualTo(true));
     }
 
-    [Test]
-    [TestCase(2)]
-    [TestCase(4)]
+    [Theory]
+    [InlineData(2)]
+    [InlineData(4)]
     public void IsOddNumber_EvenNumber_ReturnFalse(int number)
     {
         var calculator = new Calculator();
 
         var result = calculator.IsOddNumber(number);
 
-        Assert.IsFalse(result);
+        Assert.False(result);
     }
 
-    [Test]
-    [TestCase(10, ExpectedResult = false)]
-    [TestCase(3, ExpectedResult = true)]
-    public bool IsOddNumber_Number_ReturnTrueIfOdd(int number)
+    [Theory]
+    [InlineData(10, false)]
+    [InlineData(3, true)]
+    public void IsOddNumber_Number_ReturnTrueIfOdd(int number, bool expectedResult)
     {
         var calculator = new Calculator();
 
-        return calculator.IsOddNumber(number);
+        var result =  calculator.IsOddNumber(number);
+
+        Assert.Equal(expectedResult, result);
     }
 
-    [Test]
-    [TestCase(11.2, 0.8)]
-    [TestCase(11.2, 0.2)]
-    [TestCase(11.2, 1)]
+    [Theory]
+    [InlineData(11.2, 0.8)]
     public void AddNumbers_TwoDouble_GetCorrectAddition(double a, double b)
     {
         var calculatorMSTests = new Calculator();
 
         var result = calculatorMSTests.AddNumbers(a, b);
 
-        Assert.AreEqual(12, result, 1); //number between 11-13 will assert
+        Assert.Equal(12, result, 1); //number between 11-13 will assert
     }
 
-    [Test]
+    [Fact]
     public void OddRanger_TwoNumbers_ReturnValidOddNumbersRange()
     {
         var calc = new Calculator();
@@ -73,12 +72,11 @@ public class CalculatorXUnitTests
 
         var result = calc.GetOddRange(1, 10);
 
-        Assert.AreEqual(expected, result);
-        Assert.That(result, Is.EquivalentTo(expected));
+        Assert.Equal(expected, result);
         Assert.Contains(7, result);
-        Assert.That(result, Does.Contain(7));
-        Assert.That(result, Is.Not.Empty);
-        Assert.That(result.Count, Is.EqualTo(expected.Count));
-        Assert.That(result, Is.Ordered);
+        Assert.DoesNotContain(10, result);
+        Assert.NotEmpty(result);
+        Assert.Equal(expected.Count, result.Count);
+        Assert.Equal(result.OrderBy(x => x), result);
     }
 }
