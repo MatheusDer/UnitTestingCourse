@@ -46,4 +46,41 @@ public class BankAccountNUnitTests
 
         Assert.IsFalse(result);
     }
+
+    [Test]
+    public void LogDummy_ShouldReturnTrue_WhenLockMockString()
+    {
+        var logMock = new Mock<ILogBook>();
+        var desiredOutput = "hello";
+
+        logMock.Setup(l => l.MessageWithReturn(It.IsAny<string>())).Returns((string s) => s.ToLower()); //Ur implementing the behavior of the method
+
+        Assert.That(logMock.Object.MessageWithReturn("HEllo"), Is.EqualTo(desiredOutput));
+    }
+
+    [Test]
+    public void LogDummy_ShouldReturnTrue_WhenLockMockStringOutput()
+    {
+        var logMock = new Mock<ILogBook>();
+        var input = "A";
+        string desiredOutput = "Hello " + input;
+
+        logMock.Setup(l => l.LogWithOutputResult(input, out desiredOutput)).Returns(true); 
+
+        Assert.IsTrue(logMock.Object.LogWithOutputResult(input, out string result));
+        Assert.That(result, Is.EqualTo(desiredOutput));
+    }
+
+    [Test]
+    public void LogDummy_ShouldReturnTrue_WhenLockMockRef()
+    {
+        var logMock = new Mock<ILogBook>();
+        var usedCustomer = new Customer();
+        var customer = new Customer();
+
+        logMock.Setup(l => l.LogWithRefObj(ref usedCustomer)).Returns(true);
+
+        Assert.IsTrue(logMock.Object.LogWithRefObj(ref usedCustomer));
+        Assert.IsFalse(logMock.Object.LogWithRefObj(ref customer));
+    }
 }
