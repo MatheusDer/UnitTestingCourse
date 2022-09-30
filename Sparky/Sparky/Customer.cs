@@ -9,8 +9,10 @@ namespace Sparky;
 public class Customer
 {
     public int Discount = 15;
+
     public string GreetMessage { get; set; }
     public int OrderTotal { get; set; }
+    public bool IsPlatinum { get; set; } = false;
 
     public string CombineNames(string firstName, string lastName)
         => $"{firstName} {lastName}";
