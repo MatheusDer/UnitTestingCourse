@@ -83,4 +83,21 @@ public class BankAccountNUnitTests
         Assert.IsTrue(logMock.Object.LogWithRefObj(ref usedCustomer));
         Assert.IsFalse(logMock.Object.LogWithRefObj(ref customer));
     }
+
+    [Test]
+    public void LogDummy_ShouldMockTest_WhenSetAndGetLogTypeAndSeverityMock()
+    {
+        var logMock = new Mock<ILogBook>();
+
+        logMock.Setup(l => l.LogSeverity).Returns(10);
+        logMock.Setup(l => l.LogType).Returns("warning");
+
+        Assert.That(logMock.Object.LogSeverity, Is.EqualTo(10));
+        Assert.That(logMock.Object.LogType, Is.EqualTo("warning"));
+
+        logMock.SetupAllProperties(); //needs this to acctualy set the property values
+        logMock.Object.LogSeverity = 100;
+
+        Assert.That(logMock.Object.LogSeverity, Is.EqualTo(100));
+    }
 }

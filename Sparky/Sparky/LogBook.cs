@@ -2,6 +2,9 @@
 
 public interface ILogBook
 {
+    int LogSeverity { get; set; }
+    string LogType { get; set; }
+
     void Message(string message);
     string MessageWithReturn(string message);
     bool LogToDb(string message);
@@ -12,6 +15,9 @@ public interface ILogBook
 
 public class LogBook : ILogBook
 {
+    public int LogSeverity { get; set; }
+    public string LogType { get; set; }
+
     public bool LogBalanceAfterWithdrawl(int balanceAfterWithdraw)
     {
         if (balanceAfterWithdraw >= 0)
