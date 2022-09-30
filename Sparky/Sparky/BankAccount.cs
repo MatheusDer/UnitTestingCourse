@@ -2,13 +2,12 @@
 
 public class BankAccount
 {
-    public int Balance { private get; set; }
-
+    private int balance;
     private readonly ILogBook _logBook;
 
     public BankAccount(ILogBook logBook)
     {
-        Balance = 0;
+        balance = 0;
         _logBook = logBook;
     }
 
@@ -16,15 +15,15 @@ public class BankAccount
     {
         _logBook.Message("Deposit Invoked");
 
-        Balance += amount;
+        balance += amount;
         return true;
     }
 
     public bool Withdraw(int amount)
     {
-        if(Balance >= amount)
+        if(balance >= amount)
         {
-            Balance -= amount;
+            balance -= amount;
             return true;
         }
 
@@ -32,5 +31,5 @@ public class BankAccount
     }
 
     public int GetBalance() 
-        => Balance;
+        => balance;
 }
