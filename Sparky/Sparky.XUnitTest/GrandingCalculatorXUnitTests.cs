@@ -1,77 +1,75 @@
-﻿//using NUnit.Framework;
+﻿using Xunit;
 
-//namespace Sparky.NUnitTest;
+namespace Sparky.NUnitTest;
 
-//[TestFixture]
-//public class GrandingCalculatorXUnitTests
-//{
-//    private GrandingCalculator grandingCalculator;
+public class GrandingCalculatorXUnitTests
+{
+    private readonly GrandingCalculator _grandingCalculator;
 
-//    [SetUp]
-//    public void Setup()
-//    {
-//        grandingCalculator = new GrandingCalculator();
-//    }
+    public GrandingCalculatorXUnitTests()
+    {
+        _grandingCalculator = new GrandingCalculator();
+    }
 
-//    [Test]
-//    public void GetGrade_ShouldReturnA_WhenInRange()
-//    {
-//        grandingCalculator.Score = 95;
-//        grandingCalculator.AttendancePercentage = 90;
+    [Fact]
+    public void GetGrade_ShouldReturnA_WhenInRange()
+    {
+        _grandingCalculator.Score = 95;
+        _grandingCalculator.AttendancePercentage = 90;
 
-//        var result = grandingCalculator.GetGrade();
+        var result = _grandingCalculator.GetGrade();
 
-//        Assert.AreEqual("A", result);
-//    }
+        Assert.Equal("A", result);
+    }
 
-//    [Test]
-//    public void GetGrade_ShouldReturnB_WhenInRange()
-//    {
-//        grandingCalculator.Score = 81;
-//        grandingCalculator.AttendancePercentage = 65;
+    [Fact]
+    public void GetGrade_ShouldReturnB_WhenInRange()
+    {
+        _grandingCalculator.Score = 81;
+        _grandingCalculator.AttendancePercentage = 65;
 
-//        var result = grandingCalculator.GetGrade();
+        var result = _grandingCalculator.GetGrade();
 
-//        Assert.AreEqual("B", result);
-//    }
+        Assert.Equal("B", result);
+    }
 
-//    [Test]
-//    public void GetGrade_ShouldReturnC_WhenInRange()
-//    {
-//        grandingCalculator.Score = 61;
-//        grandingCalculator.AttendancePercentage = 65;
+    [Fact]
+    public void GetGrade_ShouldReturnC_WhenInRange()
+    {
+        _grandingCalculator.Score = 61;
+        _grandingCalculator.AttendancePercentage = 65;
 
-//        var result = grandingCalculator.GetGrade();
+        var result = _grandingCalculator.GetGrade();
 
-//        Assert.AreEqual("C", result);
-//    }
+        Assert.Equal("C", result);
+    }
 
-//    [Test]
-//    [TestCase(95, 55)]
-//    [TestCase(55, 95)]
-//    [TestCase(55, 55)]
-//    public void GetGrade_ShouldReturnD_WhenInRange(int score, int attendancePercentage)
-//    {
-//        grandingCalculator.Score = score;
-//        grandingCalculator.AttendancePercentage = attendancePercentage;
+    [Theory]
+    [InlineData(95, 55)]
+    [InlineData(55, 95)]
+    [InlineData(55, 55)]
+    public void GetGrade_ShouldReturnD_WhenInRange(int score, int attendancePercentage)
+    {
+        _grandingCalculator.Score = score;
+        _grandingCalculator.AttendancePercentage = attendancePercentage;
 
-//        var result = grandingCalculator.GetGrade();
+        var result = _grandingCalculator.GetGrade();
 
-//        Assert.AreEqual("D", result);
-//    }
+        Assert.Equal("D", result);
+    }
 
-//    [Test]
-//    [TestCase(95, 90, ExpectedResult = "A")]
-//    [TestCase(81, 65, ExpectedResult = "B")]
-//    [TestCase(61, 65, ExpectedResult = "C")]
-//    [TestCase(95, 55, ExpectedResult = "D")]
-//    [TestCase(55, 95, ExpectedResult = "D")]
-//    [TestCase(55, 55, ExpectedResult = "D")]
-//    public string Get_Grade_ShouldReturnCorrectGrade_WhenInRange(int score, int attendancePercentage) //All tests in one
-//    {
-//        grandingCalculator.Score = score;
-//        grandingCalculator.AttendancePercentage = attendancePercentage;
+    [Theory]
+    [InlineData(95, 90, "A")]
+    [InlineData(81, 65, "B")]
+    [InlineData(61, 65, "C")]
+    [InlineData(95, 55, "D")]
+    [InlineData(55, 95, "D")]
+    [InlineData(55, 55, "D")]
+    public void Get_Grade_ShouldReturnCorrectGrade_WhenInRange(int score, int attendancePercentage, string expectedResult) //All tests in one
+    {
+        _grandingCalculator.Score = score;
+        _grandingCalculator.AttendancePercentage = attendancePercentage;
 
-//        return grandingCalculator.GetGrade();
-//    }
-//}
+        Assert.Equal(expectedResult, _grandingCalculator.GetGrade());
+    }
+}
