@@ -1,58 +1,56 @@
-﻿//using NUnit.Framework;
+﻿using Xunit;
 
-//namespace Sparky.NUnitTest;
+namespace Sparky.NUnitTest;
 
-//[TestFixture]
-//public class FiboXUnitTests
-//{
-//    private Fibo fibo;
+public class FiboXUnitTests
+{
+    private readonly Fibo fibo;
 
-//    [SetUp]
-//    protected void Setup()
-//    {
-//        fibo = new Fibo();
-//    }
+    public FiboXUnitTests()
+    {
+        fibo = new Fibo();
+    }
 
-//    [Test]
-//    public void GetFiboSeries_RangeOne_ShouldReturnFiboSeries()
-//    {
-//        fibo.Range = 1;
-//        var expected = new List<int>() { 0 };
+    [Fact]
+    public void GetFiboSeries_RangeOne_ShouldReturnFiboSeries()
+    {
+        fibo.Range = 1;
+        var expected = new List<int>() { 0 };
 
-//        var result = fibo.GetFiboSeries();
+        var result = fibo.GetFiboSeries();
 
-//        Assert.Multiple(() =>
-//        {
-//            Assert.That(result, Is.EqualTo(expected));
-//            Assert.That(result, Is.Not.Empty);
-//            Assert.That(result, Is.Ordered);
-//        });
-//    }
+        Assert.Multiple(() =>
+        {
+            Assert.Equal(expected, result);
+            Assert.NotEmpty(result);
+            Assert.Equal(result.OrderBy(i => i), result);
+        });
+    }
 
-//    [Test]
-//    public void GetFiboSeries_RangeSix_ShouldReturnFiboSeries()
-//    {
-//        fibo.Range = 6;
-//        var expected = new List<int>() { 0, 1, 1, 2, 3, 5 };
+    [Fact]
+    public void GetFiboSeries_RangeSix_ShouldReturnFiboSeries()
+    {
+        fibo.Range = 6;
+        var expected = new List<int>() { 0, 1, 1, 2, 3, 5 };
 
-//        var result = fibo.GetFiboSeries();
+        var result = fibo.GetFiboSeries();
 
-//        Assert.Multiple(() =>
-//        {
-//            Assert.That(result, Is.EqualTo(expected));
-//            Assert.That(result.Count, Is.EqualTo(fibo.Range));
-//            Assert.That(result, Does.Contain(3));
-//            Assert.That(result, Does.Not.Contain(6));
-//        });
-//    }
+        Assert.Multiple(() =>
+        {
+            Assert.Equal(expected, result);
+            Assert.Equal(fibo.Range, result.Count);
+            Assert.Contains(3, result);
+            Assert.DoesNotContain(6, result);
+        });
+    }
 
-//    [Test]
-//    public void GetFiboSeries_RangeZero_ShouldReturnEmptyList()
-//    {
-//        fibo.Range = 0;
+    [Fact]
+    public void GetFiboSeries_RangeZero_ShouldReturnEmptyList()
+    {
+        fibo.Range = 0;
 
-//        var result = fibo.GetFiboSeries();
+        var result = fibo.GetFiboSeries();
 
-//        Assert.That(result, Is.Empty);
-//    }
-//}
+        Assert.Empty(result);
+    }
+}
