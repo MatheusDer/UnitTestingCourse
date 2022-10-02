@@ -3,17 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.Web", "Bongo.Web\Bongo.Web.csproj", "{84FE5B37-227A-4681-A004-8EFE2D812D15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Web", "Bongo.Web\Bongo.Web.csproj", "{84FE5B37-227A-4681-A004-8EFE2D812D15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.Core", "Bongo.Core\Bongo.Core.csproj", "{A7F2F2F0-DDE9-4EA2-9CD3-8FB106D2D298}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Core", "Bongo.Core\Bongo.Core.csproj", "{A7F2F2F0-DDE9-4EA2-9CD3-8FB106D2D298}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.DataAccess", "Bongo.DataAccess\Bongo.DataAccess.csproj", "{AAF2D5FB-0B21-4A2A-9D80-0D89FB4E15FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.DataAccess", "Bongo.DataAccess\Bongo.DataAccess.csproj", "{AAF2D5FB-0B21-4A2A-9D80-0D89FB4E15FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.Models", "Bongo.Models\Bongo.Models.csproj", "{0185E1A4-ABC4-4883-BD0F-9B01E179E971}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Models", "Bongo.Models\Bongo.Models.csproj", "{0185E1A4-ABC4-4883-BD0F-9B01E179E971}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C06FD68E-31FD-4591-992C-800BE8B24E14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.Models.Test", "Bongo.Models.Test\Bongo.Models.Test.csproj", "{C9AE8FA5-B0E2-46F5-85F8-E2FE762C19B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.Models.Test", "Bongo.Models.Test\Bongo.Models.Test.csproj", "{C9AE8FA5-B0E2-46F5-85F8-E2FE762C19B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{5814607B-1771-4FE5-B8B9-3EB7CE22ABEF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bongo.DataAccess.Test", "Bongo.DataAccess.Test\Bongo.DataAccess.Test.csproj", "{0095A3AA-7A0E-41B2-8153-C8FB8F4B5B92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.Core.Test", "Bongo.Core.Test\Bongo.Core.Test.csproj", "{BF2CA8A8-4B5A-4561-8511-CAB83945D4CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,12 +47,26 @@ Global
 		{C9AE8FA5-B0E2-46F5-85F8-E2FE762C19B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9AE8FA5-B0E2-46F5-85F8-E2FE762C19B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9AE8FA5-B0E2-46F5-85F8-E2FE762C19B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0095A3AA-7A0E-41B2-8153-C8FB8F4B5B92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0095A3AA-7A0E-41B2-8153-C8FB8F4B5B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0095A3AA-7A0E-41B2-8153-C8FB8F4B5B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0095A3AA-7A0E-41B2-8153-C8FB8F4B5B92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF2CA8A8-4B5A-4561-8511-CAB83945D4CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF2CA8A8-4B5A-4561-8511-CAB83945D4CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF2CA8A8-4B5A-4561-8511-CAB83945D4CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF2CA8A8-4B5A-4561-8511-CAB83945D4CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{84FE5B37-227A-4681-A004-8EFE2D812D15} = {5814607B-1771-4FE5-B8B9-3EB7CE22ABEF}
+		{A7F2F2F0-DDE9-4EA2-9CD3-8FB106D2D298} = {5814607B-1771-4FE5-B8B9-3EB7CE22ABEF}
+		{AAF2D5FB-0B21-4A2A-9D80-0D89FB4E15FF} = {5814607B-1771-4FE5-B8B9-3EB7CE22ABEF}
+		{0185E1A4-ABC4-4883-BD0F-9B01E179E971} = {5814607B-1771-4FE5-B8B9-3EB7CE22ABEF}
 		{C9AE8FA5-B0E2-46F5-85F8-E2FE762C19B1} = {C06FD68E-31FD-4591-992C-800BE8B24E14}
+		{0095A3AA-7A0E-41B2-8153-C8FB8F4B5B92} = {C06FD68E-31FD-4591-992C-800BE8B24E14}
+		{BF2CA8A8-4B5A-4561-8511-CAB83945D4CF} = {C06FD68E-31FD-4591-992C-800BE8B24E14}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D8660A7-EA26-43E6-AE68-3C263FDBB419}
